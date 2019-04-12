@@ -16,18 +16,12 @@ class LinkedList
       assign_last(data)
     end
     @count += 1
+    data
   end
 
   def to_string
-    output = []
     node = @head
-    count.times do
-      if node != nil
-        output << node.data
-        node = node.next_node
-      end
-    end
-    output.size > 1 ? output.join(' ') : output[0]
+    output
   end
 
   def find(index, nodes)
@@ -35,14 +29,7 @@ class LinkedList
     index.times do
       node = node.next_node
     end
-    output = []
-    nodes.times do
-      if node != nil
-        output << node.data
-        node = node.next_node
-      end
-    end
-    output.size > 1 ? output.join(' ') : output[0]
+    output(node, nodes)
   end
 
   def includes?(beat)
@@ -74,6 +61,7 @@ class LinkedList
     node.next_node = @head
     @head = node
     @count += 1
+    data
   end
 
   def insert(index, data)
@@ -86,6 +74,7 @@ class LinkedList
     new_node.next_node = node.next_node
     node.next_node = new_node
     @count += 1
+    data
   end
 
   private
@@ -100,6 +89,17 @@ class LinkedList
         node = node.next_node
       end
     end
+  end
+
+  def output(node = @head, nodes = @count)
+    out = []
+    nodes.times do
+      if node != nil
+        out << node.data
+        node = node.next_node
+      end
+    end
+    out.size > 1 ? out.join(' ') : out[0]
   end
 
 end

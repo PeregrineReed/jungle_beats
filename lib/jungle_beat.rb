@@ -20,6 +20,6 @@ class JungleBeat
 
   def play
     beats = @list.to_string
-    `say -r 500 #{beats}`
+    `say -r 500 -v Xander #{beats}`
   end
 end
